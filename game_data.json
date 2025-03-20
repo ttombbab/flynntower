@@ -1,0 +1,64 @@
+{
+    "story_branches": {
+        "run_coward": {
+            "message": "In a blind panic you loose all reason.",
+            "choices": [
+                [
+                    "Me get angry",
+                    "feel_angry"
+                ],
+                [
+                    "Me get sad",
+                    "feel_sad"
+                ],
+                [
+                    "Me feel scared",
+                    "feel_scared"
+                ],
+                [
+                    "Me get happy",
+                    "feel_happy"
+                ],
+                [
+                    "Me get hungry",
+                    "feel_hungry"
+                ]
+            ],
+            "drone": {
+                "feel_angry": -99,
+                "feel_sad": 99,
+                "feel_scared": -99,
+                "feel_happy": -99,
+                "feel_hungry": -99
+            },
+            "underwater": {
+                "feel_angry": -99,
+                "feel_sad": -99,
+                "feel_scared": 99,
+                "feel_happy": -99,
+                "feel_hungry": -99
+            },
+            "alien": {
+                "feel_angry": 99,
+                "feel_sad": -99,
+                "feel_scared": -99,
+                "feel_happy": -99,
+                "feel_hungry": -99
+            },
+            "experience": {
+                "feel_angry": -99,
+                "feel_sad": -99,
+                "feel_scared": -99,
+                "feel_happy": 99,
+                "feel_hungry": -99
+            },
+            "luck": {
+                "feel_angry": 0,
+                "feel_sad": 0,
+                "feel_scared": 0,
+                "feel_happy": 0,
+                "feel_hungry": 99
+            }
+        }
+    }
+}
