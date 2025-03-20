@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elder Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/form-builder@3.0.1/dist/js.form-builder.min.js"></script>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">  </head>
+    
+<body>
+    <script>
+        const selectedVibe = localStorage.getItem('selectedVibe');
+        if (selectedVibe) {
+            const themeStyleLink = document.getElementById('theme-style');
+            themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+        }
+    </script>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="username">Elder Name:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Secret Elder Name:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <button id="playButton" class="vibe-button">Enter the Kiva</button>
+            
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/form-builder@3.0.1/dist/js.form-builder.min.js"></script>
+    <script>
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const loginForm = document.getElementById('login-form');
+        function validateInputs() {
+            if (usernameInput.value.trim() === '') {
+                alert('Please enter a username.');
+                return false;
+            }
+
+            if (passwordInput.value.trim() === '') {
+                alert('Please enter a password.');
+                return false;
+            }
+
+            return true;
+        }
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim(); 
+            if (!validateInputs()) return;
+
+            //console.log(`Username: ${username}, Password: ${password}`);
+        });
+    </script>
+</body>
+</html>

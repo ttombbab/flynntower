@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Select Index</title>
+    <link id="theme-style" rel="stylesheet" href="default.css">
+    <style> /* Basic layout styling */
+        body { text-align: center; }
+        .links-container { display: inline-block; text-align: left; } /* Center links container */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Your Vibe</h1>
+        <select id="vibe-selector">
+            <option value="">-- Select a Vibe --</option>
+            <option value="in_the_sky">In the Sky</option>
+            <option value="deep_desert">Deep Desert</option>
+            <option value="space_station">Space Station</option>
+            <option value="garden_of_eden">Garden of Eden</option>
+            <option value="cyberpunk">Cyberpunk</option>
+            <option value="solarpunk">Solarpunk</option>
+        </select>
+
+        <div class="links-container">
+            <ul class="links-list">
+                <li><a href="llm_interface.html">LLM Interface</a></li>
+                <li><a href="bulletin_board.html">Bulletin Board</a></li>
+                <li><a href="webcam_view.html">Webcam View</a></li>
+                <li><a href="garden_journal.html">Garden Journal</a></li>
+                <li><a href="trail_maps_and_info.html">Trail Maps and Info</a></li>
+                <li><a href="pictogram_gallery.html">Pictogram Gallery</a></li>
+                <li><a href="desert_flora_and_fauna_and_minerals.html">Desert Flora & Fauna & Minerals</a></li>
+                <li><a href="stargazing.html">Stargazing</a></li>
+                <li><a href="permaculture_resources.html">Permaculture Resources</a></li>
+                <li><a href="local_events.html">Local Events</a></li>
+                <li><a href="art_and_photography.html">Art and Photography</a></li>
+                <li><a href="guest_book.html">Guest Book</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const vibeSelector = document.getElementById('vibe-selector');
+        const themeStyleLink = document.getElementById('theme-style');
+
+        vibeSelector.addEventListener('change', function() {
+            const selectedVibe = vibeSelector.value;
+            if (selectedVibe) {
+                themeStyleLink.href = `CSS/${selectedVibe}.css`;
+                // Placeholder for image prompt generation - will discuss in next steps.
+                console.log(`Vibe selected: ${selectedVibe}. Image prompt generation would be triggered here.`);
+                // In a real setup, you would use fetch API to send 'selectedVibe' to backend (Python)
+                // and receive back an image prompt.
+            } else {
+                themeStyleLink.href = 'default.css'; // Reset to default if no vibe selected
+            }
+        });
+    </script>
+</body>
+</html>

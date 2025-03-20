@@ -1,0 +1,153 @@
+body {
+    background: linear-gradient(to bottom, #87CEEB, #FFFFFF), url("resourses/cloud1.jpg"); /* Replace "clouds.jpg" with your cloud image path */
+    background-size: cover;
+    background-blend-mode: overlay;
+    color: #333;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    animation: cloud-drift 30s linear infinite; /* Cloud animation */
+}
+
+@keyframes cloud-drift {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 0; }
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#vibe-selector {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #333;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    transition: box-shadow 0.3s ease;
+}
+
+#vibe-selector:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.links-list {
+    list-style: none;
+    padding: 0;
+}
+
+.links-list li {
+    margin-bottom: 15px;
+}
+
+.links-list li a {
+    display: block;
+    padding: 15px 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.links-list li a:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #000;
+}
+
+/* Form Styles */
+form {
+    background-color: rgba(255, 255, 255, 0.6); /* Light form background */
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+textarea {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"] {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"], .vibe-button {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="submit"]:hover, .vibe-button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}

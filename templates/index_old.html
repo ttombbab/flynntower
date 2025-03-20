@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Select Index</title>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+    <style> /* Basic layout styling - keep inline styles in <head> or move to CSS */
+        body { text-align: center; } /* Keep default text alignment */
+        .links-container { display: inline-block; text-align: left; } /* Center links container */
+    </style>
+</head>
+<body>
+    <div class="container"> <h1>Select Your Vibe</h1> <select id="vibe-selector">
+            <option value="">-- Select a Vibe --</option>
+            <option value="in_the_sky">In the Sky</option>
+            <option value="deep_desert">Deep Desert</option>
+            <option value="space_station">Space Station</option>
+            <option value="garden_of_eden">Garden of Eden</option>
+            <option value="cyberpunk">Cyberpunk</option>
+            <option value="solarpunk">Solarpunk</option>
+            <option value="steampunk">steampunk</option>
+        </select>
+
+        <div class="links-container">
+            <ul class="links-list">
+                <li><a href="/llm">LLM Interface</a></li> <li><a href="/bulletin">Bulletin Board</a></li>
+                <li><a href="/webcam">Webcam View</a></li>
+                <li><a href="/garden">Garden Journal</a></li>
+                <li><a href="/trails">Trail Maps and Info</a></li>
+                <li><a href="/pictograms">Pictogram Gallery</a></li>
+                <li><a href="/flora_fauna">Desert Flora & Fauna & Minerals</a></li>
+                <li><a href="/stargazing">Stargazing</a></li>
+                <li><a href="/permaculture">Permaculture Resources</a></li>
+                <li><a href="/events">Local Events</a></li>
+                <li><a href="/art">Art and Photography</a></li>
+                <li><a href="/guest_book">Guest Book</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const vibeSelector = document.getElementById('vibe-selector');
+        const themeStyleLink = document.getElementById('theme-style');
+
+        vibeSelector.addEventListener('change', function() {
+            const selectedVibe = vibeSelector.value;
+            if (selectedVibe) {
+                themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+                console.log(`Vibe selected: ${selectedVibe}. CSS URL: ${themeStyleLink.href}`);
+            } else {
+                themeStyleLink.href = "{{ url_for('static', filename='default.css') }}";
+            }
+        });
+    </script>
+</body>
+</html>

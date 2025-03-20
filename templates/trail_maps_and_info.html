@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trails and Information</title>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 600px;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #image-container { /* New container for the image */
+            display: none; /* Initially hidden */
+            width: 80%;
+            margin: 20px auto;
+            text-align: center; /* Center the image */
+        }
+        #image-container img{
+            max-width: 100%;
+            height: auto;
+        }
+
+        #video-container {
+            display: none;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trail Virtual Tour</h1>
+        <div id="map"></div>
+        <div id="image-container">
+            <img id="displayed-image" src="" alt="Panorama">
+        </div>
+        <div id="video-container">
+            <video controls>
+                <source id="video-source" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedVibe = localStorage.getItem('selectedVibe');
+            //const selectedVibe = "in_the_sky"
+            console.log("vibe called ",selectedVibe);
+            var map = L.map('map').setView([34.543055555555554, -109.58749999999999], 16);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+    
+            var trailCoordinates = [
+                [34.543055555555554, -109.58749999999999], 
+                [34.54361111111111, -109.58583333333333], 
+                [34.54416666666666, -109.585], 
+                [34.544444444444444, -109.58555555555554], 
+                [34.544444444444444, -109.58583333333333], 
+                [34.54444444444, -109.5858], 
+                [34.54472222222222, -109.58527777777778], 
+                [34.544444444444444, -109.585], 
+                [34.54472222222222, -109.58333333333333], 
+                [34.544999999999995, -109.58333333333333], 
+                [34.545833333333334, -109.58444444444444], 
+                [34.545833333333334, -109.585],
+                [34.54611111111111, -109.585],
+                [34.54611111111111, -109.58472222222221],
+                [34.54722222222222, -109.58472222222221],
+                [34.54694444444444, -109.58777777777777],
+                [34.54555555555555, -109.58666666666666],
+            ];
+    
+            // Draw the trail on the map:
+            var trail = L.polyline(trailCoordinates, { color: 'green' }).addTo(map);
+            map.fitBounds(trail.getBounds()); // Fit map to trail
+    
+            function updateTrailColor(vibe) {
+                console.log("trail color called ",vibe);
+                var color;
+                switch (vibe) {
+                    case "in_the_sky":
+                        color = "#0077BE"; // A blue that matches the sky gradient
+                        break;
+                    case "cyberpunk": // Add the cyberpunk colors
+                        color = "#00FF00"; // Example color
+                        break;
+                    case "space_station":
+                        color = "#222";
+                        break;
+                    case "steampunk":
+                        color = "#A0522D";
+                        break;
+                    case "solarpunk":
+                        color = "#006400";
+                        break;
+                    case "garden_of_eden":
+                        color = "#228B22";
+                        break;
+                    case "deep_desert":
+                        color = "#555";
+                        break;
+                    default:
+                        color = "green"; // Default color
+                }
+        
+                trail.setStyle({ color: color });
+            }
+        
+            var locations = [
+                // **PASTE YOUR COORDINATES AND DATA HERE:**
+                {
+                    name: "Pictogram Wall Panorama 1",
+                    type: "panorama",
+                    lat: 34.543124999999996,
+                    lng: -109.58729166666666,
+                    imageUrl: "{{ url_for('static', filename='images/trails/panorama/IMG_20250225_102919310.jpg') }}" // Path to your panorama
+                },
+                {
+                    name: "Pictogram Wall Panorama 2",
+                    type: "panorama",
+                    lat: 34.54319444444444,
+                    lng: -109.58708333333333,
+                    imageUrl: "{{ url_for('static', filename='images/trails/panorama/IMG_20250225_102958007.jpg') }}" // Path to your panorama
+                },
+                {
+                    name: "Pictogram Wall Panorama 3",
+                    type: "panorama",
+                    lat: 34.54326388888888,
+                    lng: -109.58687499999999,
+                    imageUrl: "{{ url_for('static', filename='images/trails/panorama/IMG_20250225_103025751.jpg') }}" // Path to your panorama
+                },
+                {
+                    name: "Pictogram Wall Panorama 4",
+                    type: "panorama",
+                    lat: 34.54333333333332,
+                    lng: -109.58666666666666,
+                    imageUrl: "{{ url_for('static', filename='images/trails/panorama/IMG_20250225_103106103.jpg') }}" // Path to your panorama
+                },
+                {
+                    name: "Pictogram Wall Panorama 5",
+                    type: "panorama",
+                    lat: 34.543402777777764,
+                    lng: -109.58645833333333,
+                    imageUrl: "{{ url_for('static', filename='images/trails/panorama/IMG_20250225_103146119.jpg') }}" // Path to your panorama
+                },
+                {
+                    name: "Pictogram Wall Panorama 6",
+                    type: "panorama",
+                    lat: 34.543472222222206,
+                    lng: -109.58624999999999,
+                    imageUrl: "{{ url_for('static', filename='images/trails/panorama/IMG_20250225_103217509.jpg') }}" // Path to your panorama
+                },
+                {
+                    name: "Pictogram Wall Panorama 7",
+                    type: "panorama",
+                    lat: 34.54354166666665,
+                    lng: -109.58604166666666,
+                    imageUrl: "{{ url_for('static', filename='images/trails/panorama/IMG_20250225_103244439.jpg') }}" // Path to your panorama
+                },
+                {
+                    name: "Time-lapse wall",
+                    type: "video",
+                    lat: 34.543055555555554,
+                    lng: -109.58749999999999,
+                    videoUrl: "{{ url_for('static', filename='images/trails/vids/VID_20250225_103843314_HL.mp4') }}" // Path to your video
+                },
+                {
+                    name: "Time-lapse corner",
+                    type: "video",
+                    lat: 34.54361111111111,
+                    lng: -109.58583333333333,
+                    videoUrl: "{{ url_for('static', filename='images/trails/vids/VID_20250225_104014714_HL.mp4') }}" // Path to your video
+                },
+                {
+                    name: "Time-lapse ampatheater",
+                    type: "video",
+                    lat: 34.544444444444444,
+                    lng: -109.585,
+                    videoUrl: "{{ url_for('static', filename='images/trails/vids/VID_20250225_104431942_HL.mp4') }}" // Path to your video
+                },
+                {
+                    name: "Time-lapse creek",
+                    type: "video",
+                    lat:  34.544999999999995, 
+                    lng: -109.58333333333333,
+                    videoUrl: "{{ url_for('static', filename='images/trails/vids/VID_20250225_104850471_HL.mp4') }}" // Path to your video
+                },
+            ];
+    
+            locations.forEach(function(location) {
+                L.marker([location.lat, location.lng]).addTo(map)
+                    .bindPopup(location.name)
+                    .on('click', function() {
+                        if (location.type === "panorama") {
+                            showImage(location.imageUrl);
+                        } else if (location.type === "video") {
+                            showVideo(location.videoUrl);
+                        }
+                    });
+            });
+    
+    
+            function showImage(imageUrl) {
+                document.getElementById('video-container').style.display = 'none';
+                document.getElementById('image-container').style.display = 'block';
+    
+                var displayedImage = document.getElementById('displayed-image');
+                displayedImage.src = imageUrl;
+    
+            }
+    
+            function showVideo(videoUrl) {
+                document.getElementById('image-container').style.display = 'none';
+                document.getElementById('video-container').style.display = 'block';
+    
+                var videoSource = document.getElementById('video-source');
+                videoSource.src = videoUrl;
+                videoSource.parentElement.load();
+            }
+ 
+        
+            // Apply the theme to the page.
+            if (selectedVibe) {
+                const themeStyleLink = document.getElementById('theme-style');
+                themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+                updateTrailColor(selectedVibe);
+            }
+        });
+    </script>
+</body>
+</html>

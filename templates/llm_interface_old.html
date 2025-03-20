@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fugawy connection</title>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">  </head>
+<body>
+    <script>
+        // Retrieve the selected vibe from localStorage
+        const selectedVibe = localStorage.getItem('selectedVibe');
+
+        // Apply the saved theme if it exists
+        if (selectedVibe) {
+            const themeStyleLink = document.getElementById('theme-style');
+            themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+        }
+    </script>
+ 
+
+    <div class="container">
+        <h1>Talk With The Chief Of The Fugawy Tribe</h1>
+        <form method="POST">
+            <div class="input-area">
+                <textarea id="prompt" name="prompt" rows="6" cols="50"></textarea>
+                <select id="model" name="model" style="display:none">
+                    <option value="tomchat-fugawy" {% if selected_model == "Chief" %}selected{% endif %}>Chief</option>
+                    <option value="tomchat-creative" {% if selected_model == "Crazy Talk" %}selected{% endif %}>Crazy Talk</option>
+                </select><br><br>
+                </div>
+            <input type="submit" value="Ascend">
+        </form>
+
+        {% if generated_text %}
+            <h2>The Great Chief Speeks</h2>
+            <div id="generated_text">{{ generated_text }}</div>
+        {% endif %}
+
+    </div>
+</body>
+</html>

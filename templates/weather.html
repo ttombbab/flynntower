@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+    <style>
+        .weather-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .weather-card img {
+            max-width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const selectedVibe = localStorage.getItem('selectedVibe');
+        if (selectedVibe) {
+            const themeStyleLink = document.getElementById('theme-style');
+            themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+        }
+    </script>
+    <div class="container">
+        <h2>{{ page_title }} {{ date_str }}</h2>
+        <section>
+            {% for weather in weather_data %}
+            <article class="weather-card">
+                <h3>{{ weather.name }}</h3>
+                <img src="{{ weather.icon }}" alt="{{ weather.short_forecast }}">
+                <p>Temperature: {{ weather.temperature }}{{ weather.temperature_unit }}</p>
+                <p>Short Forecast: {{ weather.short_forecast }}</p>
+                <p>Detailed Forecast: {{ weather.detailed_forecast }}</p>
+                <p>Start Time: {{ weather.start_time }}</p>
+                <p>End Time: {{ weather.end_time }}</p>
+                <p>Wind: {{ weather.wind_speed }} {{ weather.wind_direction }}</p>
+            </article>
+            {% endfor %}
+        </section>
+    </div>
+</body>
+</html>

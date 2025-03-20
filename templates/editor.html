@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch Editor</title>
+    <style>
+        {{ css_content|safe }}
+    </style>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='CSS/kiva.css') }}">  </head>
+</head>
+<body>
+
+    <h1>Add a Branch</h1>
+    <label for="branch_id">Branch ID:</label><input type="text" id="branch_id"><br>
+    <label for="message">Message:</label><textarea id="message"></textarea><br>
+
+    <div id="choicesContainer">
+        </div><br>
+
+    <button id="addChoiceButton">Add Choice</button><br><br>
+    <button id="saveButton">Save Branch</button><br>
+    <a href="/" ><h2>Go In Peace</h2> </a><br><br>
+    <h2>Story Branches (Flask App):</h2>
+    <p>{{ story_branches }}</p>
+
+    <h2>Message Branches (Flask App):</h2>
+    <p>{{ message_branches }}</p>
+
+    <h2>Story Branches (Game Data):</h2>
+    <p id="gameStoryBranches"></p>
+
+    <h2>Message Branches (Game Data):</h2>
+    <p id="gameMessageBranches"></p>
+
+    <script>
+        const choicesContainer = document.getElementById("choicesContainer");
+        const addChoiceButton = document.getElementById("addChoiceButton");
+        const saveButton = document.getElementById("saveButton");
+
+        let choiceCount = 0;
+
+        addChoiceButton.addEventListener("click", () => {
+            choiceCount++;
+            const choiceDiv = document.createElement("div");
+            choiceDiv.innerHTML = `
+                <label for="choice${choiceCount}">Choice ${choiceCount}:</label>
+                <input type="text" id="choice${choiceCount}">
+                <label for="choice${choiceCount}_target">Target:</label>
+                <input type="text" id="choice${choiceCount}_target"><br>
+                <label for="choice${choiceCount}_drone">Drone:</label>
+                <input type="number" id="choice${choiceCount}_drone" value="0"><br>
+                <label for="choice${choiceCount}_alien">Alien:</label>
+                <input type="number" id="choice${choiceCount}_alien" value="0"><br>
+                <label for="choice${choiceCount}_underwater">Underwater:</label>
+                <input type="number" id="choice${choiceCount}_underwater" value="0"><br>
+                <label for="choice${choiceCount}_experience">Experience:</label>
+                <input type="number" id="choice${choiceCount}_experience" value="0"><br>
+                <label for="choice${choiceCount}_luck">Luck:</label>
+                <input type="number" id="choice${choiceCount}_luck" value="0"><br>
+            `;
+            choicesContainer.appendChild(choiceDiv);
+        });
+
+        saveButton.addEventListener("click", async () => {
+            const branchId = document.getElementById("branch_id").value;
+            const message = document.getElementById("message").value;
+            const choices = [];
+            const drone = {};
+            const alien = {};
+            const underwater = {};
+            const experience = {};
+            const luck = {};
+
+            for (let i = 1; i <= choiceCount; i++) {
+                const choiceText = document.getElementById(`choice${i}`).value;
+                const choiceTarget = document.getElementById(`choice${i}_target`).value;
+                const droneValue = parseInt(document.getElementById(`choice${i}_drone`).value);
+                const alienValue = parseInt(document.getElementById(`choice${i}_alien`).value);
+                const underwaterValue = parseInt(document.getElementById(`choice${i}_underwater`).value);
+                const experienceValue = parseInt(document.getElementById(`choice${i}_experience`).value);
+                const luckValue = parseInt(document.getElementById(`choice${i}_luck`).value);
+
+                choices.push([choiceText, choiceTarget]);
+                drone[choiceTarget] = droneValue;
+                alien[choiceTarget] = alienValue;
+                underwater[choiceTarget] = underwaterValue;
+                experience[choiceTarget] = experienceValue;
+                luck[choiceTarget] = luckValue;
+            }
+
+            const data = {
+                branch_id: branchId,
+                message: message,
+                choices: choices,
+                drone: drone,
+                alien: alien,
+                underwater: underwater,
+                experience: experience,
+                luck: luck,
+            };
+
+            const response = await fetch("/api/save_branch", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+            alert(result.message);
+        });
+
+        async function loadGameDataBranches() {
+            const response = await fetch("/api/game_data");
+            const gameData = await response.json();
+
+            const storyBranches = Object.keys(gameData.story_branches);
+            const messageBranches = [];
+            for (const branchId in gameData.story_branches) {
+                messageBranches.push(gameData.story_branches[branchId].message);
+            }
+
+            document.getElementById("gameStoryBranches").textContent = JSON.stringify(storyBranches);
+            document.getElementById("gameMessageBranches").textContent = JSON.stringify(messageBranches);
+        }
+        
+ 
+        loadGameDataBranches();
+    </script>
+    <script>
+        // Retrieve the selected vibe from localStorage
+        const selectedVibe = localStorage.getItem('selectedVibe');
+
+        // Apply the saved theme if it exists
+        if (selectedVibe) {
+            const themeStyleLink = document.getElementById('theme-style');
+            themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+        }
+    </script>
+</body>
+</html>

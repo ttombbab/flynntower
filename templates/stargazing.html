@@ -1,0 +1,68 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flynn Tower LLM Interface</title>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">  </head>
+<body>
+    <script>
+        // Retrieve the selected vibe from localStorage
+        const selectedVibe = localStorage.getItem('selectedVibe');
+
+        // Apply the saved theme if it exists
+        if (selectedVibe) {
+            const themeStyleLink = document.getElementById('theme-style');
+            themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+        }
+    </script>
+    
+    <h2>Stargazing in the High Desert</h2>
+
+    <p>The high desert offers unparalleled stargazing opportunities due to its dark skies and clear atmosphere.  Here's what you need to know to make the most of your stargazing experience:</p>
+
+    <h3>What to Bring</h3>
+    <ul>
+        <li>Telescope or binoculars (optional)</li>
+        <li>Red light flashlight (to preserve night vision)</li>
+        <li>Blanket or chair</li>
+        <li>Warm clothes (even in the desert, nights can be cold)</li>
+        <li>Star chart or app</li>
+    </ul>
+
+
+    <div id="sky-map">
+    <h3>Sunset {{ date_str }} {{ sunset_str }}</h3>
+    <div class="image-row">
+        <img src="{{ url_for('static', filename='stargazing_plots/' + date_str + '_sunset_planet.png') }}" alt="Sunset Dome">
+        <h3>Sunset Dome</h3>
+        <img src="{{ url_for('static', filename='stargazing_plots/' + image_filenames.sunset.N) }}" alt="Sunset North">
+        <h3>Sunset North</h3>
+        <img src="{{ url_for('static', filename='stargazing_plots/' + image_filenames.sunset.S) }}" alt="Sunset South">
+        <h3>Sunset South</h3>
+        <img src="{{ url_for('static', filename='stargazing_plots/' + image_filenames.sunset.E) }}" alt="Sunset East">
+        <h3>Sunset East</h3>
+        <img src="{{ url_for('static', filename='stargazing_plots/' + image_filenames.sunset.W) }}" alt="Sunset West">
+        <h3>Sunset West</h3>
+    </div>
+    <h3>Sunrise {{ date_str }} {{ sunrise_str }}</h3>
+    <div class="image-row">
+        <img src="{{ url_for('static', filename='stargazing_plots/' + date_str + '_sunrise_planet.png') }}" alt="Sunrise Dome">
+        <h3>Sunrise Dome</h3>
+        <img src="{{ url_for('static', filename='stargazing_plots/' + image_filenames.sunrise.N) }}" alt="Sunrise North">
+        <h3>Sunrise North</h3>
+        <img src="{{ url_for('static', filename='stargazing_plots/' + image_filenames.sunrise.S) }}" alt="Sunrise South">
+        <h3>Sunrise South</h3>
+        <img src="{{ url_for('static', filename='stargazing_plots/' + image_filenames.sunrise.E) }}" alt="Sunrise East">
+        <h3>Sunrise East</h3>
+        <img src="{{ url_for('static', filename='stargazing_plots/' + image_filenames.sunrise.W) }}" alt="Sunrise West">
+        <h3>Sunrise West</h3>
+    </div>
+    <br><br>
+    <h3>Resources</h3>
+    <ul>
+        <li><a href="https://stellarium.org/" target="_blank">Stellarium (Free planetarium software)</a></li>
+        <li><a href="https://skyandtelescope.org/" target="_blank">Sky & Telescope Magazine</a></li>
+        <li><a href="https://www.nasa.gov/" target="_blank">NASA Space Place</a></li>
+    </ul><br><br>
+
+ </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Garden Gallery</title>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+    <style>
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        /* Styles for the image and caption page */
+        .image-page {
+            text-align: center; /* Center image and caption */
+        }
+
+        .image-page img {
+            max-width: 80%; /* Limit image width */
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .image-page .caption {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const selectedVibe = localStorage.getItem('selectedVibe');
+        if (selectedVibe) {
+            const themeStyleLink = document.getElementById('theme-style');
+            themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+        }
+    </script>
+    <div class="container">
+        <h1>Garden Gallery</h1>
+        <div class="gallery">
+            {% for image in images %}
+                <a href="{{ url_for('display_image_caption',image_name=image) }}" target="_blank"> <img src="{{ url_for('static', filename='images/garden/' + image) }}" alt="{{ image }}"> </a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

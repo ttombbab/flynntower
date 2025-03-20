@@ -1,0 +1,150 @@
+body {
+    background-color: #111;
+    color: #00FF00;
+    font-family: 'VT323', monospace;
+    text-shadow: 0 0 5px #00FF00, 0 0 10px #00FFFF;
+    background-image: url('resourses/scan18.png'); 
+    background-repeat: repeat;
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+#vibe-selector {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px dotted #00FF00;
+    border-radius: 5px;
+    background-color: rgba(0, 255, 0, 0.2);
+    color: #000;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+}
+
+.links-list {
+    list-style: none;
+    padding: 0;
+}
+
+.links-list li {
+    margin-bottom: 15px;
+}
+
+.links-list li a {
+    display: block;
+    padding: 15px 25px;
+    background-color: rgba(0, 255, 0, 0.7);
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 255, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.links-list li a:hover {
+    background-color: #FF00FF;
+    color: #111;
+}
+
+/* Glitch Effect */
+.glitch {
+    animation: glitch 0.5s linear infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0, 0); }
+    2% { transform: translate(-2px, 1px); }
+    4% { transform: translate(1px, -2px); }
+    6% { transform: translate(-1px, 0); }
+    8% { transform: translate(2px, -1px); }
+    10% { transform: translate(0, 0); }
+}
+
+/* Form Styles */
+form {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border: 2px solid #00FF00;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-image: url('resourses/scan10.png'); /* Replace with your circuit pattern */
+    background-repeat: repeat;
+    background-size: 200px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #00FF00;
+    font-family: 'VT323', monospace;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #111;
+    color: #00FF00;
+    border: 1px solid #00FF00;
+    border-radius: 3px;
+    font-family: 'VT323', monospace;
+    box-shadow: 0 0 5px #00FF00;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00FFFF;
+    border-color: #00FFFF;
+}
+
+textarea {
+    border: 2px dotted #00FF00;
+}
+
+input[type="submit"] {
+    background-color: rgba(0, 255, 0, 0.7);
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(0, 255, 0, 0.9);
+    animation: glitch 0.5s linear;
+}
+
+input[type="submit"], .vibe-button {
+    background-color: rgba(0, 255, 0, 0.7);
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover, .vibe-button:hover {
+    background-color: rgba(0, 255, 0, 0.9);
+    animation: glitch 0.5s linear;
+}
+
+::placeholder {
+    color: rgba(0, 255, 0, 0.5);
+    font-family: 'VT323', monospace;
+}

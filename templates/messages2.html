@@ -1,0 +1,25 @@
+
+<!-- templates/create_message.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Message</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+            <h1>Create Message</h1>
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <p>{{ form.name.label }}<br>{{ form.name }}</p>
+                <p>{{ form.chat_id.label }}<br>{{ form.chat_id }}</p>
+                <p>{{ form.submit }}</p>
+            </form>
+        </div>
+    {% endblock %}
+</body>
+</html>

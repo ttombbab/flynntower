@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Select Index</title>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+    <style>
+        body { text-align: center; }
+        .links-container { display: inline-block; text-align: left; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flynn Tower</h1>
+        <select id="vibe-selector">
+            <option value="">-- Select a Vibe --</option>
+            <option value="in_the_sky">In the Sky</option>
+            <option value="deep_desert">Deep Desert</option>
+            <option value="space_station">Space Station</option>
+            <option value="garden_of_eden">Garden of Eden</option>
+            <option value="cyberpunk">Cyberpunk</option>
+            <option value="solarpunk">Solarpunk</option>
+            <option value="steampunk">Steampunk</option>
+        </select>
+
+        <div class="links-container">
+            <ul class="links-list">
+                <li><a href="/llm">Ancient Elder AI</a></li>
+                <li><a href="/weather">Concho Bonito Weather</a></li>
+                <li><a href="/events">Local Events and Shopping</a></li>
+                <li><a href="/trails">Trail Maps and Info</a></li>
+                <li><a href="/pictograms">Pictogram Gallery</a></li>
+                <li><a href="/flora_fauna">Desert Flora & Fauna & Minerals</a></li>
+                <li><a href="/stargazing">Stargazing</a></li>
+                <li><a href="/bulletin">Bulletin Board</a></li>
+                <li><a href="/garden">Garden Journal</a></li>
+                <li><a href="/passtest">Kiva</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const vibeSelector = document.getElementById('vibe-selector');
+        const themeStyleLink = document.getElementById('theme-style');
+
+        // Function to set the theme and store it in localStorage
+        function setTheme(selectedVibe) {
+            if (selectedVibe) {
+                themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+                localStorage.setItem('selectedVibe', selectedVibe); // Store in localStorage
+            } else {
+                themeStyleLink.href = "{{ url_for('static', filename='default.css') }}";
+                localStorage.removeItem('selectedVibe'); // Remove from localStorage
+            }
+        }
+
+        // Check for a saved theme on page load
+        const savedVibe = localStorage.getItem('selectedVibe');
+        if (savedVibe) {
+            setTheme(savedVibe);
+            vibeSelector.value = savedVibe; // Set the dropdown value
+        }
+
+
+        vibeSelector.addEventListener('change', function() {
+            const selectedVibe = vibeSelector.value;
+            setTheme(selectedVibe);
+        });
+    </script>
+</body>
+</html>

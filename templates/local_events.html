@@ -1,0 +1,51 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flynn Tower - Local Events and Shopping</title>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+</head>
+<body>
+    <script>
+        // Retrieve the selected vibe from localStorage
+        const selectedVibe = localStorage.getItem('selectedVibe');
+
+        // Apply the saved theme if it exists
+        if (selectedVibe) {
+            const themeStyleLink = document.getElementById('theme-style');
+            themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+        }
+    </script>
+    <div class="container">
+        <h1>Local Events and Shopping</h1>
+
+        <h2>Events</h2>
+        <ul>
+            <li><a href="http://apachecountyfair.org" target="_blank">Apache County Fair</a></li>
+            <li><a href="http://apachecountyaz.gov" target="_blank">Apache County Government Website</a></li>
+        </ul>
+
+        <h2>Shopping</h2>
+        <h3>Valley Talley Trading</h3>
+        <p>
+            <a href="http://192.168.0.103:5701/login" target="_blank">Visit Valley Talley Trading</a>
+        </p>
+
+        <h2>Directions</h2>
+
+        <h3>Directions to Dollar General (Concho Valley, AZ)</h3>
+        <p>From: Concho Bonito (Lat: 34.543056, Lon: -109.5875)</p>
+        <p>To: Dollar General, Concho Valley, AZ</p>
+        <p>
+            <a href="https://www.google.com/maps/dir/34.543056,-109.5875/Dollar+General,+Concho+Valley,+AZ" target="_blank">Get Directions on Google Maps</a>
+        </p>
+
+        <h3>Directions to St. John Market (St. Johns, AZ)</h3>
+        <p>From: Concho Bonito (Lat: 34.543056, Lon: -109.5875)</p>
+        <p>To: St. John Market, St. Johns, AZ</p>
+        <p>
+            <a href="https://www.google.com/maps/dir/34.543056,-109.5875/St.+John+Market,+St.+Johns,+AZ" target="_blank">Get Directions on Google Maps</a>
+        </p>
+
+    </div>
+</body>
+</html>

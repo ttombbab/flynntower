@@ -1,0 +1,148 @@
+body {
+    background-color: #222; /* Dark gray background */
+    color: #EEE; /* Light gray text */
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.02em; /* Slightly condensed */
+    background-image: url("resourses/space1.jpg"); /* Replace with your starfield image */
+    background-size: cover;
+    background-blend-mode: overlay;
+    animation: star-drift 120s linear infinite; /* Slow star drift */
+}
+
+@keyframes star-drift {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent); /* Directional light */
+}
+
+#vibe-selector {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid #00BFFF; /* Electric blue border */
+    border-radius: 8px; /* Slightly more rounded */
+    background-color: rgba(40, 40, 40, 0.9); /* Even darker gray */
+    color: #EEE; /* Light gray text */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    backdrop-filter: blur(5px); /* Subtle blur */
+}
+
+.links-list {
+    list-style: none;
+    padding: 0;
+}
+
+.links-list li {
+    margin-bottom: 15px; /* Increased spacing */
+}
+
+.links-list li a {
+    display: block;
+    padding: 15px 25px; /* Increased padding */
+    background-color: rgba(50, 50, 50, 0.9); /* Slightly lighter gray */
+    color: #00BFFF; /* Electric blue text */
+    text-decoration: none;
+    border-radius: 8px; /* More rounded */
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.2); /* Subtle blue glow */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    text-shadow: 0 0 5px #00BFFF, 0 0 10px #00FFFF; /* Layered glow */
+}
+
+.links-list li a:hover {
+    background-color: rgba(70, 70, 70, 0.95); /* Darker gray on hover */
+    color: #00FFFF; /* Cyan on hover */
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.4); /* More intense glow on hover */
+}
+
+/* Form Styles */
+form {
+    background-color: rgba(40, 40, 40, 0.9); /* Dark gray form background */
+    padding: 20px;
+    border: 2px solid #00BFFF; /* Electric blue border */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #EEE;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: rgba(50, 50, 50, 0.9);
+    color: #00BFFF;
+    border: 1px solid #00BFFF;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: inset 0 1px 3px rgba(0, 191, 255, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+    border-color: #00FFFF;
+}
+
+textarea {
+    border: 2px solid #00BFFF;
+}
+
+input[type="submit"] {
+    background-color: rgba(50, 50, 50, 0.9);
+    color: #00BFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(70, 70, 70, 0.95);
+    color: #00FFFF;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+}
+
+input[type="submit"], .vibe-button {
+    background-color: rgba(50, 50, 50, 0.9);
+    color: #00BFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="submit"]:hover, .vibe-button:hover {
+    background-color: rgba(70, 70, 70, 0.95);
+    color: #00FFFF;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+}
+
+::placeholder {
+    color: rgba(0, 191, 255, 0.5);
+    font-family: 'Montserrat', sans-serif;
+}

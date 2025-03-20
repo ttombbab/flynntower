@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ image_name }}</title>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+    <style>
+         .image-page {
+            text-align: center; /* Center image and caption */
+        }
+
+        .image-page img {
+            max-width: 80%; /* Limit image width */
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .image-page .caption {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const selectedVibe = localStorage.getItem('selectedVibe');
+        if (selectedVibe) {
+            const themeStyleLink = document.getElementById('theme-style');
+            themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+        }
+    </script>
+    <div class="image-page">
+        <img src="{{ url_for('static', filename=image_path) }}" alt="{{ image_name }}">
+        {% if caption %}
+            <p class="caption">{{ caption }}</p>
+        {% else %}
+            <p class="caption">No caption available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

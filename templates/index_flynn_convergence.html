@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flynn Tower Adventure</title>
+    <style>
+       {{ css_content|safe }}
+    </style>
+ 
+
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">  </head>
+    
+</head>
+<body>
+      <script>
+        // Retrieve the selected vibe from localStorage
+        const selectedVibe = localStorage.getItem('selectedVibe');
+
+        // Apply the saved theme if it exists
+        if (selectedVibe) {
+            const themeStyleLink = document.getElementById('theme-style');
+            themeStyleLink.href = `{{ url_for('static', filename='CSS/') }}${selectedVibe}.css`;
+        }
+    </script>
+    <div class="container">
+        <h1 class="rad-title">Flynn Tower: Convergence</h1>
+        <div class="message-box">
+            <p>{{ message }}</p>
+        </div>
+        <div class="inventory">
+            <strong>Inventory:</strong> {{ inventory }}
+        </div>
+        <div class="stats">
+            <strong>Drone Knowledge:</strong> {{ drone_knowledge }} | <strong>Alien Trust:</strong> {{ alien_trust }} | <strong>Underwater Trust:</strong> {{ underwater_trust }}
+        </div>
+        <form method="post" class="choice-form">
+            {% for choice in choices %}
+            <button type="submit" name="choice" value="{{ choice[1] }}" class="rad-button">{{ choice[0] }}</button>
+            {% endfor %}
+        </form>
+    </div>
+</body>
+</html>

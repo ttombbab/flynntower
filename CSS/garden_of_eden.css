@@ -1,0 +1,130 @@
+body {
+    background-color: #FFFDD0; /* Creamy background */
+    color: #006400; /* Forest green text */
+    font-family: 'Lora', serif;
+    background-image: url('resourses/garden3.jpg'); /* Replace with your jungle image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Parallax effect */
+    animation: leaf-sway 10s linear infinite; /* Leaf sway animation */
+}
+
+@keyframes leaf-sway {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    background: radial-gradient(circle, rgba(255, 255, 240, 0.2), transparent); /* Sunlight gradient */
+}
+
+#vibe-selector {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #A0522D; /* Earthy brown border */
+    border-radius: 8px; /* Slightly more rounded */
+    background-color: rgba(245, 222, 179, 0.7); /* Light beige background */
+    color: #228B22; /* Forest green text */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+}
+
+.links-list {
+    list-style: none;
+    padding: 0;
+}
+
+.links-list li {
+    margin-bottom: 15px; /* Increased spacing */
+}
+
+.links-list li a {
+    display: block;
+    padding: 15px 25px; /* Increased padding */
+    background-color: rgba(107, 142, 35, 0.7); /* Olive green */
+    color: #FFFDD0; /* Creamy text */
+    text-decoration: none;
+    border-radius: 8px; /* Slightly more rounded */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Slightly more pronounced shadow */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.3); /* Reflection effect */
+}
+
+.links-list li a:hover {
+    background-color: rgba(85, 107, 47, 0.9); /* Darker olive green on hover */
+    color: #FFFFFF; /* White text on hover */
+}
+
+/* Form Styles */
+form {
+    background-color: rgba(245, 222, 179, 0.5); /* Light beige form background */
+    padding: 20px;
+    border: 1px dashed #A0522D; /* Distressed border */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #228B22;
+    font-family: 'Lora', serif;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: rgba(245, 222, 179, 0.3);
+    color: #228B22;
+    border: 1px solid #A0522D;
+    border-radius: 5px;
+    font-family: 'Lora', serif;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+textarea {
+    border: 1px dashed #A0522D;
+}
+
+input[type="submit"], .vibe-button {
+    background-color: rgba(107, 142, 35, 0.7);
+    color: #FFFDD0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Lora', serif;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="submit"]:hover, .vibe-button:hover {
+    background-color: rgba(85, 107, 47, 0.9);
+    color: #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+    font-family: 'Lora', serif;
+}

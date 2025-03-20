@@ -1,0 +1,156 @@
+body {
+    background-color: #332211; /* Dark, earthy background */
+    color: #A0522D; /* Sienna/brown text */
+    font-family: 'Roboto Condensed', sans-serif;
+    background-image: url("resourses/gear8.jpg"); /* Replace with your gear image */
+    background-repeat: repeat;
+    animation: rotate-gears 120s linear infinite; /* Gear rotation */
+}
+
+@keyframes rotate-gears {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+#vibe-selector {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid #8B4513;
+    border-radius: 8px;
+    background-color: rgba(51, 34, 17, 0.7);
+    color: #D2B48C;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+}
+
+.links-list {
+    list-style: none;
+    padding: 0;
+}
+
+.links-list li {
+    margin-bottom: 15px;
+}
+
+.links-list li a {
+    display: block;
+    padding: 15px 25px;
+    background: linear-gradient(to bottom, #B8860B, #DAA520); /* Gold gradient */
+    color: #FFD700;
+    text-decoration: none;
+    border: 2px solid #8B4513;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Embossed text */
+}
+
+.links-list li a:hover {
+    background-color: rgba(139, 69, 19, 0.8);
+    color: #FFFFE0;
+    border-color: #A0522D;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("resourses/rivits5.jpg"); /* replace with your rivet image */
+    background-repeat: repeat;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+/* Form Styles */
+form {
+    background-color: rgba(51, 34, 17, 0.8); /* Dark form background */
+    padding: 20px;
+    border: 2px solid #8B4513;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    background-image: url("resourses/blue8.jpg"); /* replace with blueprint pattern */
+    background-repeat: repeat;
+    background-size: 300px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #D2B48C;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: rgba(80, 50, 20, 0.7);
+    color: #FFD700;
+    border: 2px solid #8B4513;
+    border-radius: 5px;
+    font-family: 'Roboto Condensed', sans-serif;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px #D2B48C;
+    border-color: #D2B48C;
+}
+
+textarea {
+    border: 2px solid #8B4513;
+}
+
+button, input[type="submit"] {
+    background-color: #8B4513;
+    color: #FFD700;
+    border: 2px solid #A0522D;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Roboto Condensed', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #A0522D;
+}
+
+button, input[type="submit"], .vibe-button {
+    background-color: #8B4513;
+    color: #FFD700;
+    border: 2px solid #A0522D;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Roboto Condensed', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover, .vibe-button:hover {
+    background-color: #A0522D;
+}
+
+::placeholder {
+    color: rgba(255, 215, 0, 0.5); /* Gold placeholder */
+    font-family: 'Roboto Condensed', sans-serif;
+}
